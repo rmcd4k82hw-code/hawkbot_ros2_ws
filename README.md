@@ -31,17 +31,18 @@ A complete ROS 2 (Humble) navigation and multi-robot coordination system featuri
 * `hawkbot_navigation2`: Multi-robot launch files (`multi_navigation_launch.py`) and RViz configurations.
 * `hawkbot_cartographer`: Cartographer localization Lua configs (`lidar_robot1_localization.lua`, `lidar_robot2_localization.lua`).
 * `hawkbotcar_laser`, `hawkbotcar_ai`, `hawkbotcar_msgs`: Hardware drivers and message definitions.
-* `drivers/`: Contains essential hardware driver zip archives (`ydlidar_ros2_driver.zip`, `imu_complementary_filter.zip`, `ydlidar_ros_driver.zip`).
+* `drivers/`: Contains pre-compiled binary package archives (`ydlidar_ros2_driver.zip`, `imu_complementary_filter.zip`, `ydlidar_ros_driver.zip`).
 
 ---
 
 ## 📦 Drivers Setup (If setting up a fresh system)
-If setting up a new environment, extract the driver archives from `drivers/` into `src/`:
+These 3 driver packages are pre-compiled binary packages for ROS 2. On a fresh environment or new machine, extract these zip archives into the **`install/`** directory:
+
 ```bash
 cd ~/ROS2_WS
-unzip drivers/ydlidar_ros2_driver.zip -d src/
-unzip drivers/imu_complementary_filter.zip -d src/
-unzip drivers/ydlidar_ros_driver.zip -d src/
+unzip drivers/ydlidar_ros2_driver.zip -d install/
+unzip drivers/imu_complementary_filter.zip -d install/
+unzip drivers/ydlidar_ros_driver.zip -d install/
 ```
 
 ---
