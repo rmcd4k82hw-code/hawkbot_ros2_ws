@@ -55,7 +55,8 @@ class FollowLeader(Node):
         self.declare_parameter('max_angular_speed', 0.75)
         self.declare_parameter('min_separation', 0.35)       # 35 cm center-to-center (~15-20 cm bumper clearance)
         self.declare_parameter('consume_radius', 0.12)       # waypoint consumed when robot2 passes within 12 cm
-        self.declare_parameter('route_file', '/home/hawkbot/ROS2_WS/src/hawkbot/map/recorded_route.json')
+        default_route_file = os.path.expanduser('~/ROS2_WS/src/hawkbot/map/recorded_route.json')
+        self.declare_parameter('route_file', default_route_file)
 
         self.leader_ns = self.get_parameter('leader_ns').get_parameter_value().string_value
         self.follower_ns = self.get_parameter('follower_ns').get_parameter_value().string_value

@@ -32,7 +32,8 @@ class TrailVerifier(Node):
         super().__init__('trail_verifier')
 
         self.declare_parameter('robot_ns', 'robot1')
-        self.declare_parameter('route_file', '/home/hawkbot/ROS2_WS/src/hawkbot/map/recorded_route.json')
+        default_route_file = os.path.expanduser('~/ROS2_WS/src/hawkbot/map/recorded_route.json')
+        self.declare_parameter('route_file', default_route_file)
         self.declare_parameter('max_allowed_distance_shrink', 0.15) # Max 15% distance closing allowed
 
         self.robot_ns = self.get_parameter('robot_ns').get_parameter_value().string_value

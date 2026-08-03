@@ -19,16 +19,21 @@ from launch_ros.actions import Node
 
 
 def generate_launch_description():
-    pbstream_path = "/home/hawkbot/ROS2_WS/src/hawkbot/map/hawkbot.pbstream"
-    static_map_yaml = "/home/hawkbot/ROS2_WS/src/hawkbot/map/hawkbot_static.yaml"
-    
+    hawkbot_share = get_package_share_directory('hawkbot')
+    pbstream_path = os.path.join(hawkbot_share, 'map', 'hawkbot.pbstream')
+    if not os.path.exists(pbstream_path):
+        pbstream_path = os.path.expanduser('~/ROS2_WS/src/hawkbot/map/hawkbot.pbstream')
+
+    static_map_yaml = os.path.join(hawkbot_share, 'map', 'hawkbot_static.yaml')
+    if not os.path.exists(static_map_yaml):
+        static_map_yaml = os.path.expanduser('~/ROS2_WS/src/hawkbot/map/hawkbot_static.yaml')
+
     # Locate hawkbot_cartographer configurations
     cartographer_config_dir = os.path.join(
         get_package_share_directory('hawkbot_cartographer'), 'config'
     )
-    # Fallback to hardcoded path if share directory doesn't contain it yet
     if not os.path.exists(cartographer_config_dir):
-        cartographer_config_dir = "/home/hawkbot/ROS2_WS/src/hawkbot_cartographer/config"
+        cartographer_config_dir = os.path.expanduser('~/ROS2_WS/src/hawkbot_cartographer/config')
 
     ld = LaunchDescription()
     

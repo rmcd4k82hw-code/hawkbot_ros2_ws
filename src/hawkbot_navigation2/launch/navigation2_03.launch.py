@@ -11,7 +11,7 @@ def generate_launch_description():
 
     nav2_share_dir = get_package_share_directory('hawkbot_navigation2')
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
-    map_yaml_path = "/home/hawkbot/ROS2_WS/src/hawkbot/map/hawkbot.yaml"
+    map_yaml_path = os.path.expanduser("~/ROS2_WS/src/hawkbot/map/hawkbot.yaml")
     rviz_config_dir = os.path.join(nav2_share_dir, 'rviz', 'hawkbot_navigation2.rviz')
     nav2_param_path = os.path.join(nav2_share_dir, 'config', 'nav2_params03.yaml')
     return launch.LaunchDescription([

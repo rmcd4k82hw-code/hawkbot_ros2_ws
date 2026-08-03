@@ -129,7 +129,7 @@ class TrajectoryRecorder(Node):
         self.get_logger().info(f"Trajectory Recorder initialized for namespace '{self.robot_ns}'")
 
     def load_and_publish_saved_route(self):
-        route_path = "/home/hawkbot/ROS2_WS/src/hawkbot/map/recorded_route.json"
+        route_path = os.path.expanduser("~/ROS2_WS/src/hawkbot/map/recorded_route.json")
         if os.path.exists(route_path):
             try:
                 with open(route_path, 'r') as f:
@@ -182,20 +182,21 @@ class TrajectoryRecorder(Node):
         final_route = self.process_and_smooth_loop(self.raw_points)
 
         # 2. Save route to JSON file
-        file_path = "/home/hawkbot/ROS2_WS/src/hawkbot/map/recorded_route.json"
+        map_dir = os.path.expanduser("~/ROS2_WS/src/hawkbot/map")
+        file_path = os.path.join(map_dir, "recorded_route.json")
         try:
             os.makedirs(os.path.dirname(file_path), exist_ok=True)
             with open(file_path, 'w') as f:
                 json.dump(final_route, f, indent=2)
 
             # Create map & trajectory bundle directory
-            bundle_dir = "/home/hawkbot/ROS2_WS/src/hawkbot/map/saved_routes/route_latest"
+            bundle_dir = os.path.join(map_dir, "saved_routes", "route_latest")
             os.makedirs(bundle_dir, exist_ok=True)
             with open(os.path.join(bundle_dir, "recorded_route.json"), 'w') as f:
                 json.dump(final_route, f, indent=2)
             
             for map_file in ["hawkbot.pbstream", "hawkbot_static.yaml", "hawkbot_static.pgm"]:
-                src = os.path.join("/home/hawkbot/ROS2_WS/src/hawkbot/map", map_file)
+                src = os.path.join(map_dir, map_file)
                 if os.path.exists(src):
                     shutil.copy(src, os.path.join(bundle_dir, map_file))
 

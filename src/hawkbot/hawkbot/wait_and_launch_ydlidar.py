@@ -61,11 +61,12 @@ def main():
         sys.exit(1)
         
     # 3. Execute the actual ydlidar driver node binary
-    node_path = "/home/hawkbot/ROS2_WS/install/ydlidar_ros2_driver/lib/ydlidar_ros2_driver/ydlidar_ros2_driver_node"
-    
+    node_path = os.path.expanduser("~/ROS2_WS/install/ydlidar_ros2_driver/lib/ydlidar_ros2_driver/ydlidar_ros2_driver_node")
     if not os.path.exists(node_path):
-        # Fallback to build folder if not installed
-        node_path = "/home/hawkbot/ROS2_WS/build/ydlidar_ros2_driver/ydlidar_ros2_driver_node"
+        import shutil
+        found = shutil.which("ydlidar_ros2_driver_node")
+        if found:
+            node_path = found
         
     if not os.path.exists(node_path):
         print(f"[wait_and_launch_ydlidar] Error: Cannot find ydlidar_ros2_driver_node binary!", file=sys.stderr, flush=True)

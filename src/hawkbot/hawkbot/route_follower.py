@@ -25,7 +25,8 @@ class RouteFollower(Node):
         self.declare_parameter('lookahead_distance', 0.15)
         self.declare_parameter('max_linear_speed', 0.09)
         self.declare_parameter('max_angular_speed', 0.75)
-        self.declare_parameter('route_file', '/home/hawkbot/ROS2_WS/src/hawkbot/map/recorded_route.json')
+        default_route_file = os.path.expanduser('~/ROS2_WS/src/hawkbot/map/recorded_route.json')
+        self.declare_parameter('route_file', default_route_file)
 
         self.robot_ns = self.get_parameter('robot_ns').get_parameter_value().string_value
         self.lookahead_distance = self.get_parameter('lookahead_distance').get_parameter_value().double_value

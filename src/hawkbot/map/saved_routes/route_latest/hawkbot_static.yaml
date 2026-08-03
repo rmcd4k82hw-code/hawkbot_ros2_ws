@@ -1,4 +1,4 @@
-image: /home/hawkbot/ROS2_WS/src/hawkbot/map/hawkbot_static.pgm
+image: hawkbot_static.pgm
 resolution: 0.050000
 origin: [-0.929109, -1.072650, 0.0]
 negate: 0
