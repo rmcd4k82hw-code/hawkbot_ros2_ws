@@ -44,7 +44,10 @@ def generate_launch_description():
         parameters=[{'use_sim_time': use_sim_time}],
         arguments=['-resolution', resolution, '-publish_period_sec', publish_period_sec])
 
-    rviz_config = "/home/hawkbot/ROS2_WS/src/hawkbot_cartographer/rviz/slam.rviz"
+    rviz_config = os.path.join(pkg_share, 'rviz', 'slam.rviz')
+    if not os.path.exists(rviz_config):
+        rviz_config = "/home/hawkbot/ROS2_WS/src/hawkbot_cartographer/rviz/slam.rviz"
+
     rviz_node = Node(
         package='rviz2',
         executable='rviz2',

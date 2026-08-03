@@ -181,7 +181,14 @@ def generate_launch_description():
     ld.add_action(follow_leader_node)
 
     # Launch RViz configuration for multi-robot navigation
-    rviz_config = "/home/hawkbot/ROS2_WS/src/hawkbot_navigation2/rviz/hawkbot_navigation2.rviz"
+    rviz_config = os.path.join(
+        get_package_share_directory('hawkbot_navigation2'), 'rviz', 'hawkbot_navigation2.rviz'
+    )
+    if not os.path.exists(rviz_config):
+        rviz_config = os.path.join(
+            os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'rviz', 'hawkbot_navigation2.rviz'
+        )
+
     rviz_node = Node(
         package='rviz2',
         executable='rviz2',

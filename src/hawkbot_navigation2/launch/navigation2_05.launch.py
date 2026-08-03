@@ -9,10 +9,11 @@ from launch.substitutions import LaunchConfiguration
 def generate_launch_description():
     nav2_bringup_dir = get_package_share_directory('nav2_bringup')
 
+    nav2_share_dir = get_package_share_directory('hawkbot_navigation2')
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
     map_yaml_path = "/home/hawkbot/ROS2_WS/src/hawkbot/map/hawkbot.yaml"
-    rviz_config_dir="/home/hawkbot/ROS2_WS/src/hawkbot_navigation2/rviz/hawkbot_navigation2.rviz"
-    nav2_param_path="/home/hawkbot/ROS2_WS/src/hawkbot_navigation2/config/nav2_params05.yaml"
+    rviz_config_dir = os.path.join(nav2_share_dir, 'rviz', 'hawkbot_navigation2.rviz')
+    nav2_param_path = os.path.join(nav2_share_dir, 'config', 'nav2_params05.yaml')
     return launch.LaunchDescription([
 
         launch.actions.IncludeLaunchDescription(
