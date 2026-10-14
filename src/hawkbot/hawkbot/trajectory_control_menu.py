@@ -45,19 +45,19 @@ def main(args=None):
 
     while rclpy.ok():
         print("=" * 65)
-        print("   HAWKBOT - CONTRÔLEUR DE TRAJECTOIRE BLEUE ET SUIVI DE PARCOURS")
+        print("   HAWKBOT - DRAW A BLUE TRAJECTORY AND A PATH FOLLOWER")
         print("=" * 65)
-        print("  1. Démarrer l'enregistrement de la traînée bleue")
-        print("  2. Arrêter, fermer la boucle et sauvegarder le parcours")
-        print("  3. Effacer la traînée bleue")
+        print("  1. START RECORDING THE BLUE TRAIL")
+        print("  2. STOP, CLOSE THE LOOP AND SAVE THE PATH")
+        print("  3. REMOVE THE BLUE TRAIL")
         print("  -----------------------------------------------------------")
-        print("  4. Lancer le suivi du parcours bleu pour ROBOT 1")
-        print("  5. Lancer le suivi du parcours bleu pour ROBOT 2")
-        print("  6. Stopper le suivi de parcours (Robot 1 et Robot 2)")
-        print("  7. Quitter")
+        print("  4. START TRACKING THE BLUE TRAIL FOR ROBOT1")
+        print("  5. START TRACKING THE BLUE TRAIL FOR ROBOT2")
+        print("  6. STOP TRACKING THE BLUE TRAIL ALL ROBOTS")
+        print("  7. QUIT")
         print("=" * 65)
         
-        choice = input("Choisissez une option [1-7] : ").strip()
+        choice = input("CHOOSE AN OPTION [1-7] : ").strip()
 
         if choice == '1':
             client.call_service(client.cli_start, "Start Recording")

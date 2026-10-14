@@ -48,20 +48,20 @@ def main(args=None):
 
     while rclpy.ok():
         print("=" * 65)
-        print("   HAWKBOT - MODE FOLLOW-THE-LEADER (Robot2 suit Robot1)")
+        print("   HAWKBOT - MODE FOLLOW-THE-LEADER (Robot2 follows Robot1)")
         print("=" * 65)
-        print("  1. Activer le mode Follow-the-Leader")
-        print("     (Démarre la traînée bleue Robot1 + suivi Robot2)")
-        print("  2. Désactiver le mode Follow-the-Leader")
-        print("     (Arrête le suivi + sauvegarde la traînée)")
+        print("  1. START THE MODE FOLLOW-THE-LEADER")
+        print("     (START THE BLUE TRAIL ROBOT1 AND FOLLOWING OF THE ROBOT2)")
+        print("  2. STOP THE MODE FOLLOW-THE-LEADER")
+        print("     (STOP FOLLOWING AND SAVE TRAJECTORY)")
         print("  -----------------------------------------------------------")
-        print("  3. Démarrer manuellement la traînée bleue (Robot1)")
-        print("  4. Arrêter et sauvegarder la traînée bleue (Robot1)")
-        print("  5. Effacer la traînée bleue (Robot1)")
-        print("  6. Quitter")
+        print("  3. START MANUALY THE BLUE TRAIL ROBOT1")
+        print("  4. STOP AND SAVE THE BLUE TRAIL")
+        print("  5. REMOVE THE BLUE TRAIL ROBOT1")
+        print("  6. QUIT")
         print("=" * 65)
 
-        choice = input("Choisissez une option [1-6] : ").strip()
+        choice = input("CHOOSE AN OPTION [1-6] : ").strip()
 
         if choice == '1':
             client.call_service(client.cli_start, "Follow Leader Start")
